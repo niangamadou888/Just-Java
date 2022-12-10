@@ -20,11 +20,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     int quantity=2;
+
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
+    }
+
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        displayPrice(quantity*5);
+        int price = quantity*5;
+        String firstM = "Total: $"+price+"\nThank you!";
+        displayMessage(firstM);
     }
 
     /**
@@ -41,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void decrement(View view){
-        quantity=quantity-1;
+        if (quantity > 0){
+            quantity=quantity-1;
+        }else{
+        }
         display(quantity);
     }
 
